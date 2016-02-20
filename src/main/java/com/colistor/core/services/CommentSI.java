@@ -17,7 +17,18 @@
 
 package com.colistor.core.services;
 
+import com.colistor.core.persistence.model.Comment;
+import com.colistor.core.services.exception.ServiceException;
+
+import java.util.List;
+
 public interface CommentSI {
 
-    public Comment post()
+    public Comment post(String userCode, String drawerCode, Comment comment) throws ServiceException;
+
+    public Comment modify(String userCode, String commentCode, Comment comment) throws ServiceException;
+
+    public void delete(String userCode, String commentCode) throws ServiceException;
+
+    public List<Comment> findAll(String userCode, String drawerCode, int offset, int limit, boolean asc) throws ServiceException;
 }
