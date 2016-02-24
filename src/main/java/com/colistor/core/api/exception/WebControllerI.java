@@ -15,22 +15,29 @@
 *along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-package com.colistor.core.services;
+package com.colistor.core.api.exception;
 
-import com.colistor.core.persistence.model.Drawer;
-import com.colistor.core.services.exception.ServiceException;
+import javax.servlet.http.HttpServletRequest;
 
-import java.util.List;
+/**
+ * The Interface WebControllerI
+ */
+public interface WebControllerI {
 
-public interface DrawerSI {
+    /**
+     * Gets the name.
+     *
+     * @return the name
+     */
+    String getName();
 
-    Drawer add(String userCode, Drawer drawer) throws ServiceException;
-
-    void delete(String userCode, String drawerCode) throws ServiceException;
-
-    Drawer modify(String userCode, String drawerCode, Drawer drawer) throws ServiceException;
-
-    List<Drawer> findAll(String userCode, int offset, int limit, boolean asc) throws ServiceException;
-
-    List<Drawer> findByCriteria(String userCode, String criteria, int offset, int limit, boolean asc) throws ServiceException;
+    /**
+     * Control request.
+     *
+     * @param request the request
+     * @return true, if successful
+     * @throws WebException the web exception
+     */
+    boolean controlRequest(HttpServletRequest request)
+            throws WebException;
 }

@@ -14,8 +14,18 @@
 *You should have received a copy of the GNU Affero General Public License
 *along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
+package com.colistor.core.internalservices;
 
-package com.colistor.core.services;
+import com.colistor.core.persistence.model.User;
+import com.colistor.core.services.exception.ServiceException;
 
-public interface TodoListSI {
+public interface UserISI {
+
+    User login(String email, String password) throws ServiceException;
+
+    User register(User user) throws ServiceException;
+
+    User modify(User currentUser, User newData) throws ServiceException;
+
+    void deleteAccount(User user) throws ServiceException;
 }

@@ -15,22 +15,36 @@
 *along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-package com.colistor.core.services;
+package com.colistor.core.persistence.transaction;
 
-import com.colistor.core.persistence.model.Drawer;
-import com.colistor.core.services.exception.ServiceException;
+import java.sql.Connection;
 
-import java.util.List;
+// TODO: Auto-generated Javadoc
 
-public interface DrawerSI {
+/**
+ * The Interface TransactionInterface.
+ */
+public interface TransactionI {
 
-    Drawer add(String userCode, Drawer drawer) throws ServiceException;
+    /**
+     * Gets the connection.
+     *
+     * @return the connection
+     */
+    Connection getConnection();
 
-    void delete(String userCode, String drawerCode) throws ServiceException;
+    /**
+     * End of request.
+     */
+    void endOfRequest();
 
-    Drawer modify(String userCode, String drawerCode, Drawer drawer) throws ServiceException;
+    /**
+     * Commit.
+     */
+    void commit();
 
-    List<Drawer> findAll(String userCode, int offset, int limit, boolean asc) throws ServiceException;
-
-    List<Drawer> findByCriteria(String userCode, String criteria, int offset, int limit, boolean asc) throws ServiceException;
+    /**
+     * Rollback.
+     */
+    void rollback();
 }

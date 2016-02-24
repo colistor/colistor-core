@@ -17,8 +17,8 @@
 
 package com.colistor.core.services.exception;
 
-import persistence.exception.ExceptionLevel;
-import service.controller.RaisedException;
+import com.colistor.core.persistence.exception.ExceptionLevel;
+import com.colistor.core.services.controller.RaisedException;
 
 import java.util.ArrayList;
 import java.util.List;

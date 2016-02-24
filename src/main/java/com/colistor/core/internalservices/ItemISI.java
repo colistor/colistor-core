@@ -14,23 +14,8 @@
 *You should have received a copy of the GNU Affero General Public License
 *along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
+package com.colistor.core.internalservices;
 
-package com.colistor.core.services;
+public interface ItemISI {
 
-import com.colistor.core.persistence.model.Drawer;
-import com.colistor.core.services.exception.ServiceException;
-
-import java.util.List;
-
-public interface DrawerSI {
-
-    Drawer add(String userCode, Drawer drawer) throws ServiceException;
-
-    void delete(String userCode, String drawerCode) throws ServiceException;
-
-    Drawer modify(String userCode, String drawerCode, Drawer drawer) throws ServiceException;
-
-    List<Drawer> findAll(String userCode, int offset, int limit, boolean asc) throws ServiceException;
-
-    List<Drawer> findByCriteria(String userCode, String criteria, int offset, int limit, boolean asc) throws ServiceException;
 }

@@ -14,23 +14,26 @@
 *You should have received a copy of the GNU Affero General Public License
 *along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
+package com.colistor.core.persistence.dao.drawer;
 
-package com.colistor.core.services;
-
+import com.colistor.core.persistence.dao.DAOI;
+import com.colistor.core.persistence.exception.DAOException;
 import com.colistor.core.persistence.model.Drawer;
-import com.colistor.core.services.exception.ServiceException;
+import com.colistor.core.persistence.transaction.TransactionI;
 
-import java.util.List;
+public class DrawerDAO implements DAOI<Drawer> {
+    @Override
+    public Drawer insert(TransactionI trans, Drawer drawer) throws DAOException {
+        return null;
+    }
 
-public interface DrawerSI {
+    @Override
+    public Drawer update(TransactionI trans, Drawer drawer) throws DAOException {
+        return null;
+    }
 
-    Drawer add(String userCode, Drawer drawer) throws ServiceException;
+    @Override
+    public void delete(TransactionI trans, Drawer drawer) throws DAOException {
 
-    void delete(String userCode, String drawerCode) throws ServiceException;
-
-    Drawer modify(String userCode, String drawerCode, Drawer drawer) throws ServiceException;
-
-    List<Drawer> findAll(String userCode, int offset, int limit, boolean asc) throws ServiceException;
-
-    List<Drawer> findByCriteria(String userCode, String criteria, int offset, int limit, boolean asc) throws ServiceException;
+    }
 }

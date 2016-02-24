@@ -14,23 +14,22 @@
 *You should have received a copy of the GNU Affero General Public License
 *along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
+package com.colistor.core.api.user;
 
-package com.colistor.core.services;
+import com.colistor.core.api.APIHttpServlet;
+import com.colistor.core.api.exception.WebException;
+import com.colistor.core.persistence.model.User;
 
-import com.colistor.core.persistence.model.Drawer;
-import com.colistor.core.services.exception.ServiceException;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.io.IOException;
 
-import java.util.List;
+public class ModifyUser extends APIHttpServlet {
 
-public interface DrawerSI {
-
-    Drawer add(String userCode, Drawer drawer) throws ServiceException;
-
-    void delete(String userCode, String drawerCode) throws ServiceException;
-
-    Drawer modify(String userCode, String drawerCode, Drawer drawer) throws ServiceException;
-
-    List<Drawer> findAll(String userCode, int offset, int limit, boolean asc) throws ServiceException;
-
-    List<Drawer> findByCriteria(String userCode, String criteria, int offset, int limit, boolean asc) throws ServiceException;
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response, HttpSession session, User user) throws WebException, ServletException, IOException {
+        super.doPost(request, response, session, user);
+    }
 }

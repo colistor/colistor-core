@@ -15,22 +15,26 @@
 *along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-package com.colistor.core.services;
+package com.colistor.core.persistence.dao.item;
 
-import com.colistor.core.persistence.model.Drawer;
-import com.colistor.core.services.exception.ServiceException;
+import com.colistor.core.persistence.dao.DAOI;
+import com.colistor.core.persistence.exception.DAOException;
+import com.colistor.core.persistence.model.Item;
+import com.colistor.core.persistence.transaction.TransactionI;
 
-import java.util.List;
+public class ItemDAO implements DAOI<Item> {
+    @Override
+    public Item insert(TransactionI trans, Item item) throws DAOException {
+        return null;
+    }
 
-public interface DrawerSI {
+    @Override
+    public Item update(TransactionI trans, Item item) throws DAOException {
+        return null;
+    }
 
-    Drawer add(String userCode, Drawer drawer) throws ServiceException;
+    @Override
+    public void delete(TransactionI trans, Item item) throws DAOException {
 
-    void delete(String userCode, String drawerCode) throws ServiceException;
-
-    Drawer modify(String userCode, String drawerCode, Drawer drawer) throws ServiceException;
-
-    List<Drawer> findAll(String userCode, int offset, int limit, boolean asc) throws ServiceException;
-
-    List<Drawer> findByCriteria(String userCode, String criteria, int offset, int limit, boolean asc) throws ServiceException;
+    }
 }

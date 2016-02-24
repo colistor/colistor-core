@@ -17,5 +17,21 @@
 
 package com.colistor.core.services;
 
+import com.colistor.core.persistence.model.ListTemplate;
+import com.colistor.core.services.exception.ServiceException;
+
+import java.util.List;
+
 public interface ListTemplateSI {
+
+    ListTemplate create(String userCode, ListTemplate listTemplate) throws ServiceException;
+
+    ListTemplate modify(String userCode, String listTemplateCode, ListTemplate listTemplate) throws ServiceException;
+
+    void delete(String userCode, String listTemplateCode) throws ServiceException;
+
+    List<ListTemplate> findAll(String userCode, int offset, int limit, boolean asc) throws ServiceException;
+
+    List<ListTemplate> findByCriteria(String userCode, String criteria, int offset, int limit, boolean asc) throws ServiceException;
+
 }

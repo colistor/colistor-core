@@ -17,5 +17,22 @@
 
 package com.colistor.core.services;
 
+import com.colistor.core.persistence.model.Drawer;
+import com.colistor.core.persistence.model.Item;
+import com.colistor.core.services.exception.ServiceException;
+
+import java.util.List;
+
 public interface ItemSI {
+
+    Item add(String userCode, Item item) throws ServiceException;
+
+    Item modify(String userCode, String itemCode, Item newData) throws ServiceException;
+
+    void delete(String userCode, String itemCode) throws ServiceException;
+
+    List<Item> findAll(String userCode, int offset, int limit, boolean asc) throws ServiceException;
+
+    List<Drawer> findByCriteria(String userCode, String criteria, int offset, int limit, boolean asc) throws ServiceException;
+
 }

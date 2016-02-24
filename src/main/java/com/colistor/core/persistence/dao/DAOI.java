@@ -17,63 +17,44 @@
 
 package com.colistor.core.persistence.dao;
 
-import persistence.exception.DAOException;
-import persistence.transaction.TransactionI;
+import com.colistor.core.persistence.exception.DAOException;
+import com.colistor.core.persistence.transaction.TransactionI;
 
-// TODO: Auto-generated Javadoc
-
-/**
- * Interface for DAO classes with the basics functions.
- *
- * @param <T> the generic type
- * @author Joël Favre
+/*
+*The data access object interface gives the methods to write the data into the persistence system.
+* Inserting, modifying, and deleting are common to all objects.
+* However, reading is specific for each object (find by id, or all with/without criteria), therefore,
+* it is not part of this interface.
  */
 public interface DAOI<T> {
 
     /**
      * Insert.
      *
-     * @param trans the trans
-     * @param t     the t
-     * @return the t
+     * @param trans the transaction
+     * @param t     the object to insert
+     * @return the inserted version of the object t
      * @throws DAOException the DAO exception
      */
-    public T insert(TransactionI trans, T t) throws DAOException;
+    T insert(TransactionI trans, T t) throws DAOException;
 
     /**
      * Modify.
      *
-     * @param trans the trans
-     * @param t     the t
-     * @return the t
+     * @param trans the transaction
+     * @param t     the object, it must contain the id, the remaining and the new values.
+     * @return the updated version of the object t
      * @throws DAOException the DAO exception
      */
-    public T modify(TransactionI trans, T t) throws DAOException;
+    T update(TransactionI trans, T t) throws DAOException;
 
     /**
      * Erase.
      *
-     * @param trans the trans
-     * @param t     the t
+     * @param trans the transaction
+     * @param t     the object to delete, it must contain the id.
      * @throws DAOException the DAO exception
      */
-    public void erase(TransactionI trans, T t) throws DAOException;
+    void delete(TransactionI trans, T t) throws DAOException;
 
-	/*public T findById(TransactionInterface trans, String id)
-            throws DAOException;
-
-	public T findByCriteria(TransactionInterface trans, String query,
-			Object... objs) throws DAOException;
-
-	public List<T> findListByCriteria(TransactionInterface trans, String query,
-			Object... objs) throws DAOException;
-
-	public T findByCriterion(TransactionInterface trans, String query,
-			Object objs) throws DAOException;
-
-	public List<T> findListByCriterion(TransactionInterface trans,
-			String query, Object objs) throws DAOException;
-
-	public long count(TransactionInterface trans, String query, T t)
-			throws DAOException;*/
 }

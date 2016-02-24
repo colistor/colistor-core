@@ -14,23 +14,22 @@
 *You should have received a copy of the GNU Affero General Public License
 *along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
+package com.colistor.core.api.user;
 
-package com.colistor.core.services;
+import java.util.HashMap;
+import java.util.Map;
 
-import com.colistor.core.persistence.model.Drawer;
-import com.colistor.core.services.exception.ServiceException;
+public class UserSession {
 
-import java.util.List;
+    private String userCode;
 
-public interface DrawerSI {
+    private Map<String, String> values;
 
-    Drawer add(String userCode, Drawer drawer) throws ServiceException;
+    public UserSession() {
+        values = new HashMap<String, String>();
+    }
 
-    void delete(String userCode, String drawerCode) throws ServiceException;
-
-    Drawer modify(String userCode, String drawerCode, Drawer drawer) throws ServiceException;
-
-    List<Drawer> findAll(String userCode, int offset, int limit, boolean asc) throws ServiceException;
-
-    List<Drawer> findByCriteria(String userCode, String criteria, int offset, int limit, boolean asc) throws ServiceException;
+    public Map<String, String> getValues() {
+        return values;
+    }
 }
