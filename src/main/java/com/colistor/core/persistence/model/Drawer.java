@@ -17,5 +17,18 @@
 
 package com.colistor.core.persistence.model;
 
+import jodd.vtor.constraint.NotBlank;
+
 public class Drawer {
+
+    @NotBlank(profiles = {"is_u,is_d"})
+    private String id;
+
+    @NotBlank(profiles = {"s_u,s_d"})
+    private String code;
+
+    @NotBlank(profiles = {"i,u"})
+    private String title;
+
+    private String description;
 }

@@ -17,25 +17,26 @@
 
 package com.colistor.core.services;
 
-import com.colistor.core.persistence.model.ItemTemplate;
 import com.colistor.core.persistence.model.List;
 import com.colistor.core.services.exception.ServiceException;
 
 public interface ListSI {
 
-    List add(String userCode, List list) throws ServiceException;
+    java.util.List<List> create(String userCode, String drawerCode, List... list) throws ServiceException;
 
-    List modify(String userCode, String userList, List list) throws ServiceException;
+    java.util.List<List> create(String userCode, String drawerCode, List[] list, String... itemCodes) throws ServiceException;
 
-    void delete(String userCode, String userList) throws ServiceException;
+    List modify(String userCode, String listCode, List list) throws ServiceException;
 
-    java.util.List<ItemTemplate> findAll(String userCode, String drawerCode, int offset, int limit, boolean asc) throws ServiceException;
+    void delete(String userCode, String... listCode) throws ServiceException;
 
-    java.util.List<ItemTemplate> findByCriteria(String userCode, String drawerCode, String criteria, int offset, int limit, boolean asc) throws ServiceException;
+    java.util.List<List> findAll(String userCode, String drawerCode, int offset, int limit, boolean asc) throws ServiceException;
 
-    java.util.List<ItemTemplate> findByTemplate(String userCode, String drawerCode, String listTemplateCode, int offset, int limit, boolean asc) throws ServiceException;
+    java.util.List<List> findByCriteria(String userCode, String drawerCode, String criteria, int offset, int limit, boolean asc) throws ServiceException;
 
-    java.util.List<ItemTemplate> findByTemplate_Criteria(String userCode, String drawerCode, String listTemplateCode, String criteria, int offset, int limit, boolean asc) throws ServiceException;
+    java.util.List<List> findByTemplate(String userCode, String drawerCode, String listTemplateCode, int offset, int limit, boolean asc) throws ServiceException;
+
+    java.util.List<List> findByTemplate_Criteria(String userCode, String drawerCode, String listTemplateCode, String criteria, int offset, int limit, boolean asc) throws ServiceException;
 
 
 }

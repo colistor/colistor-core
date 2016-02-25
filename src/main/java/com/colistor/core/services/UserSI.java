@@ -20,13 +20,53 @@ package com.colistor.core.services;
 import com.colistor.core.persistence.model.User;
 import com.colistor.core.services.exception.ServiceException;
 
+/**
+ * Manage a user account : registering, signing in, modifying the personal data, deleting the account.
+ */
 public interface UserSI {
 
-    User login(String email, String password) throws ServiceException;
+    /**
+     * Verifying that the email and the password correspond to a registered user,
+     * if it is the case the user is authenticated and is returned
+     *
+     * @param email    The email address of the User
+     * @param password The password of the User
+     * @return The user if the authentication is correct and null if not
+     * @throws ServiceException It will be thrown if the parameters are not correct or if something else happens
+     * @see com.colistor.core.persistence.model.User for the email and the password
+     */
+    User authenticate(String email, String password) throws ServiceException;
 
+    /**
+     * Register a new User
+     *
+     * @see com.colistor.core.persistence.model.User
+     *
+     * @param user The new user data. See the User class to check what is mandatory
+     * @return The new User with the code and the id
+     * @throws ServiceException It will be thrown if the parameters are not correct or if something else happens
+     */
     User register(User user) throws ServiceException;
 
+    /**
+     * Modifying the user's data
+     *
+     * @see com.colistor.core.persistence.model.User for the userCode
+     *
+     * @param userCode The code of the User that will be modified
+     * @param user The data of the modified user, including the data that has not been changed. The id and the code are not needed.
+     * @return The User referred by the userCode
+     * @throws ServiceException It will be thrown if the parameters are not correct or if something else happens
+     */
     User modify(String userCode, User user) throws ServiceException;
 
+    /**
+     * Deleting an account
+     *
+     * @see com.colistor.core.persistence.model.User for the userCode
+     *
+     * @param userCode The code of the User that will be deleted
+     * @throws ServiceException It will be thrown if the parameters are not correct or if something else happens
+     */
     void deleteAccount(String userCode) throws ServiceException;
 }
