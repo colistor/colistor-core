@@ -18,4 +18,7 @@
 package com.colistor.core.persistence.model;
 
 public class Comment {
+
+    private transient String id;
+    private String comment;
 }

@@ -54,7 +54,7 @@ public interface UserSI {
      * @see com.colistor.core.persistence.model.User for the userCode
      *
      * @param userCode The code of the User that will be modified
-     * @param user The data of the modified user, including the data that has not been changed. The id and the code are not needed.
+     * @param user The values of the modified user, including the values that have not been changed. The id and the code are not needed.
      * @return The User referred by the userCode
      * @throws ServiceException It will be thrown if the parameters are not correct or if something else happens
      */
@@ -69,4 +69,5 @@ public interface UserSI {
      * @throws ServiceException It will be thrown if the parameters are not correct or if something else happens
      */
     void deleteAccount(String userCode) throws ServiceException;
+
 }

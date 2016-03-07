@@ -16,5 +16,90 @@
 */
 package com.colistor.core.persistence.model;
 
+import java.util.Date;
+import java.util.List;
+
 public class ListTemplate {
+
+    private transient String id;
+    private String code;
+    private String userCode;
+    private String image;
+    private String description;
+    private java.util.List<ListTemplateField> fields;
+    private String validator;
+    private Date createDate;
+    private Date updateDate;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public String getUserCode() {
+        return userCode;
+    }
+
+    public void setUserCode(String userCode) {
+        this.userCode = userCode;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public List<ListTemplateField> getFields() {
+        return fields;
+    }
+
+    public void setFields(List<ListTemplateField> fields) {
+        this.fields = fields;
+    }
+
+    public String getValidator() {
+        return validator;
+    }
+
+    public void setValidator(String validator) {
+        this.validator = validator;
+    }
+
+    public Date getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
+    }
+
+    public Date getUpdateDate() {
+        return updateDate;
+    }
+
+    public void setUpdateDate(Date updateDate) {
+        this.updateDate = updateDate;
+    }
 }

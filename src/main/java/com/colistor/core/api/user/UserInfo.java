@@ -19,6 +19,10 @@ package com.colistor.core.api.user;
 import com.colistor.core.api.APIHttpServlet;
 import com.colistor.core.api.exception.WebException;
 import com.colistor.core.persistence.model.User;
+import com.colistor.core.services.UserSI;
+import com.google.gson.Gson;
+import com.google.inject.Inject;
+import com.google.inject.Provider;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -28,8 +32,12 @@ import java.io.IOException;
 
 public class UserInfo extends APIHttpServlet {
 
+    @Inject
+    private Provider<UserSI> userS;
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response, HttpSession session, User user) throws WebException, ServletException, IOException {
-
+        Gson gson = new Gson();
+        response.getWriter().print(gson.toJson(user));
     }
 }

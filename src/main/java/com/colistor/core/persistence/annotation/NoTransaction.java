@@ -14,19 +14,23 @@
 *You should have received a copy of the GNU Affero General Public License
 *along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-package com.colistor.core.internalservices;
 
-import com.colistor.core.persistence.model.User;
-import com.colistor.core.persistence.transaction.TransactionI;
-import com.colistor.core.services.exception.ServiceException;
+package com.colistor.core.persistence.annotation;
 
-public interface UserISI {
+import com.google.inject.BindingAnnotation;
 
-    User login(TransactionI trans, String email, String password) throws ServiceException;
+import java.lang.annotation.Retention;
+import java.lang.annotation.Target;
 
-    User register(TransactionI trans, User user) throws ServiceException;
+import static java.lang.annotation.ElementType.*;
+import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
-    User modify(TransactionI trans, User currentUser, User newData) throws ServiceException;
+/**
+ * The Interface NoTransaction.
+ */
+@BindingAnnotation
+@Target({FIELD, PARAMETER, METHOD})
+@Retention(RUNTIME)
+public @interface NoTransaction {
 
-    void deleteAccount(TransactionI trans, User user) throws ServiceException;
 }

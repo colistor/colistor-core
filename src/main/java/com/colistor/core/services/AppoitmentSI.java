@@ -14,19 +14,17 @@
 *You should have received a copy of the GNU Affero General Public License
 *along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-package com.colistor.core.internalservices;
+package com.colistor.core.services;
 
-import com.colistor.core.persistence.model.User;
-import com.colistor.core.persistence.transaction.TransactionI;
+import com.colistor.core.persistence.model.Appointment;
 import com.colistor.core.services.exception.ServiceException;
 
-public interface UserISI {
+public interface AppoitmentSI {
 
-    User login(TransactionI trans, String email, String password) throws ServiceException;
+    Appointment add(String userCode, String drawerCode, Appointment appointment, String... listItemHookCode) throws ServiceException;
 
-    User register(TransactionI trans, User user) throws ServiceException;
+    Appointment modify(String userCode, String appointmentCode, Appointment appointment) throws ServiceException;
 
-    User modify(TransactionI trans, User currentUser, User newData) throws ServiceException;
+    Appointment delete(String userCode, String appointmentCode) throws ServiceException;
 
-    void deleteAccount(TransactionI trans, User user) throws ServiceException;
 }

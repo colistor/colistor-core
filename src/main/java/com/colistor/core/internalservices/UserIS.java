@@ -20,13 +20,25 @@ import com.colistor.core.persistence.model.User;
 import com.colistor.core.persistence.transaction.TransactionI;
 import com.colistor.core.services.exception.ServiceException;
 
-public interface UserISI {
+public class UserIS implements UserISI {
 
-    User login(TransactionI trans, String email, String password) throws ServiceException;
+    @Override
+    public User login(TransactionI trans, String email, String password) throws ServiceException {
+        return null;
+    }
 
-    User register(TransactionI trans, User user) throws ServiceException;
+    @Override
+    public User register(TransactionI trans, User user) throws ServiceException {
+        return null;
+    }
 
-    User modify(TransactionI trans, User currentUser, User newData) throws ServiceException;
+    @Override
+    public User modify(TransactionI trans, User currentUser, User newData) throws ServiceException {
+        return null;
+    }
 
-    void deleteAccount(TransactionI trans, User user) throws ServiceException;
+    @Override
+    public void deleteAccount(TransactionI trans, User user) throws ServiceException {
+
+    }
 }

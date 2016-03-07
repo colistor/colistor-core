@@ -16,17 +16,7 @@
 */
 package com.colistor.core.internalservices;
 
-import com.colistor.core.persistence.model.User;
-import com.colistor.core.persistence.transaction.TransactionI;
-import com.colistor.core.services.exception.ServiceException;
+public interface DrawerISI {
 
-public interface UserISI {
 
-    User login(TransactionI trans, String email, String password) throws ServiceException;
-
-    User register(TransactionI trans, User user) throws ServiceException;
-
-    User modify(TransactionI trans, User currentUser, User newData) throws ServiceException;
-
-    void deleteAccount(TransactionI trans, User user) throws ServiceException;
 }

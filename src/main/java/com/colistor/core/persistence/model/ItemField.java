@@ -14,19 +14,35 @@
 *You should have received a copy of the GNU Affero General Public License
 *along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-package com.colistor.core.internalservices;
+package com.colistor.core.persistence.model;
 
-import com.colistor.core.persistence.model.User;
-import com.colistor.core.persistence.transaction.TransactionI;
-import com.colistor.core.services.exception.ServiceException;
+public class ItemField {
 
-public interface UserISI {
+    private String name;
+    private String type;
+    private String value;
 
-    User login(TransactionI trans, String email, String password) throws ServiceException;
+    public String getName() {
+        return name;
+    }
 
-    User register(TransactionI trans, User user) throws ServiceException;
+    public void setName(String name) {
+        this.name = name;
+    }
 
-    User modify(TransactionI trans, User currentUser, User newData) throws ServiceException;
+    public String getType() {
+        return type;
+    }
 
-    void deleteAccount(TransactionI trans, User user) throws ServiceException;
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
+    }
 }

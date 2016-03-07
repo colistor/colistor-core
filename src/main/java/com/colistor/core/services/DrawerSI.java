@@ -18,6 +18,7 @@
 package com.colistor.core.services;
 
 import com.colistor.core.persistence.model.Drawer;
+import com.colistor.core.persistence.model.Filter;
 import com.colistor.core.services.exception.ServiceException;
 
 import java.util.List;
@@ -30,7 +31,7 @@ public interface DrawerSI {
 
     Drawer modify(String userCode, String drawerCode, Drawer drawer) throws ServiceException;
 
-    List<Drawer> findAll(String userCode, int offset, int limit, boolean asc) throws ServiceException;
+    List<Drawer> findAll(String userCode, Filter filter) throws ServiceException;
 
-    List<Drawer> findByCriteria(String userCode, String criteria, int offset, int limit, boolean asc) throws ServiceException;
+    List<Drawer> findByCriteria(String userCode, String criteria, Filter filter) throws ServiceException;
 }

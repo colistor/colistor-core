@@ -14,27 +14,16 @@
 *You should have received a copy of the GNU Affero General Public License
 *along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-
 package com.colistor.core.persistence.model;
 
-import jodd.vtor.constraint.NotBlank;
+import java.util.Date;
 
-import java.util.List;
+public class AppointmentListItemHook {
 
-public class Drawer {
-
-    @NotBlank(profiles = {"is_u,is_d"})
-    private String id;
-
-    @NotBlank(profiles = {"s_u,s_d"})
-    private String code;
-
-    @NotBlank(profiles = {"i,u"})
-    private String title;
-
-    private String description;
-
-    private java.util.List<Share> shares;
+    private transient String id;
+    private String appointmentCode;
+    private ListItemHook listItemHook;
+    private Date hookDate;
 
     public String getId() {
         return id;
@@ -44,35 +33,27 @@ public class Drawer {
         this.id = id;
     }
 
-    public String getCode() {
-        return code;
+    public String getAppointmentCode() {
+        return appointmentCode;
     }
 
-    public void setCode(String code) {
-        this.code = code;
+    public void setAppointmentCode(String appointmentCode) {
+        this.appointmentCode = appointmentCode;
     }
 
-    public String getTitle() {
-        return title;
+    public ListItemHook getListItemHook() {
+        return listItemHook;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setListItemHook(ListItemHook listItemHook) {
+        this.listItemHook = listItemHook;
     }
 
-    public String getDescription() {
-        return description;
+    public Date getHookDate() {
+        return hookDate;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public java.util.List<Share> getShares() {
-        return shares;
-    }
-
-    public void setShares(List<Share> shares) {
-        this.shares = shares;
+    public void setHookDate(Date hookDate) {
+        this.hookDate = hookDate;
     }
 }

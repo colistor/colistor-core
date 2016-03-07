@@ -16,17 +16,13 @@
 */
 package com.colistor.core.internalservices;
 
-import com.colistor.core.persistence.model.User;
-import com.colistor.core.persistence.transaction.TransactionI;
-import com.colistor.core.services.exception.ServiceException;
+import com.colistor.core.internalservices.exception.InternalServiceException;
 
-public interface UserISI {
+import java.util.Map;
 
-    User login(TransactionI trans, String email, String password) throws ServiceException;
+public class MailerIS implements MailerISI {
+    @Override
+    public void sendEmail(String templateName, String subject, Map<String, String> values, String... emails) throws InternalServiceException {
 
-    User register(TransactionI trans, User user) throws ServiceException;
-
-    User modify(TransactionI trans, User currentUser, User newData) throws ServiceException;
-
-    void deleteAccount(TransactionI trans, User user) throws ServiceException;
+    }
 }

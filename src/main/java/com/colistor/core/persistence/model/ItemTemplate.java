@@ -16,5 +16,53 @@
 */
 package com.colistor.core.persistence.model;
 
+import java.util.List;
+
 public class ItemTemplate {
+
+    private transient String id;
+    private String code;
+    private String title;
+    private String description;
+    private java.util.List<ItemTemplateField> fields;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public java.util.List<ItemTemplateField> getFields() {
+        return fields;
+    }
+
+    public void setFields(List<ItemTemplateField> fields) {
+        this.fields = fields;
+    }
 }

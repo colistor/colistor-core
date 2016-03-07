@@ -52,7 +52,7 @@ public class User {
      * is_d = internal services on delete
      */
     @NotBlank(profiles = {"is_u,is_d"})
-    private String id;
+    private transient String id;
 
     /**
      * The code of the user also known as userCode.
@@ -92,13 +92,13 @@ public class User {
      * It can only be used to set a new password
      */
     @MinLength(value = 8, profiles = {"i,u"})
-    private String password;
+    private transient String password;
 
     /**
      * Is used by the internal services and dao to secure the password
      * The salt cannot be reached outside the dao
      */
-    private String salt;
+    private transient String salt;
 
     /**
      * The date and time when the user has been created.

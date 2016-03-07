@@ -14,27 +14,24 @@
 *You should have received a copy of the GNU Affero General Public License
 *along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-
 package com.colistor.core.persistence.model;
 
-import jodd.vtor.constraint.NotBlank;
+import java.util.Date;
 
-import java.util.List;
+public class Appointment {
 
-public class Drawer {
+    public static final String TABLE = "appointment";
+    public static final String ID = "id";
+    public static final String CODE = "code";
 
-    @NotBlank(profiles = {"is_u,is_d"})
-    private String id;
-
-    @NotBlank(profiles = {"s_u,s_d"})
+    private transient String id;
     private String code;
-
-    @NotBlank(profiles = {"i,u"})
+    private Date day;
+    private Date beginning;
+    private Date end;
     private String title;
-
     private String description;
-
-    private java.util.List<Share> shares;
+    private String location;
 
     public String getId() {
         return id;
@@ -50,6 +47,30 @@ public class Drawer {
 
     public void setCode(String code) {
         this.code = code;
+    }
+
+    public Date getDay() {
+        return day;
+    }
+
+    public void setDay(Date day) {
+        this.day = day;
+    }
+
+    public Date getBeginning() {
+        return beginning;
+    }
+
+    public void setBeginning(Date beginning) {
+        this.beginning = beginning;
+    }
+
+    public Date getEnd() {
+        return end;
+    }
+
+    public void setEnd(Date end) {
+        this.end = end;
     }
 
     public String getTitle() {
@@ -68,11 +89,11 @@ public class Drawer {
         this.description = description;
     }
 
-    public java.util.List<Share> getShares() {
-        return shares;
+    public String getLocation() {
+        return location;
     }
 
-    public void setShares(List<Share> shares) {
-        this.shares = shares;
+    public void setLocation(String location) {
+        this.location = location;
     }
 }

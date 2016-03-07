@@ -14,19 +14,17 @@
 *You should have received a copy of the GNU Affero General Public License
 *along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-package com.colistor.core.internalservices;
+package com.colistor.core.internalservices.right;
 
+import com.colistor.core.internalservices.exception.InternalServiceException;
 import com.colistor.core.persistence.model.User;
-import com.colistor.core.persistence.transaction.TransactionI;
-import com.colistor.core.services.exception.ServiceException;
 
-public interface UserISI {
+public interface RightI<T> {
 
-    User login(TransactionI trans, String email, String password) throws ServiceException;
+    boolean canView(User user, T t) throws InternalServiceException;
 
-    User register(TransactionI trans, User user) throws ServiceException;
+    boolean canEdit(User user, T t) throws InternalServiceException;
 
-    User modify(TransactionI trans, User currentUser, User newData) throws ServiceException;
+    boolean isOwner(User user, T t) throws InternalServiceException;
 
-    void deleteAccount(TransactionI trans, User user) throws ServiceException;
 }
