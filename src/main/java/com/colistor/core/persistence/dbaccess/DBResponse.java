@@ -14,26 +14,17 @@
 *You should have received a copy of the GNU Affero General Public License
 *along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-package com.colistor.core.internalservices.right;
+package com.colistor.core.persistence.dbaccess;
 
-import com.colistor.core.internalservices.exception.InternalServiceException;
-import com.colistor.core.persistence.model.Item;
-import com.colistor.core.persistence.model.User;
+import java.util.List;
 
-public class OnItem implements RightI<Item> {
+public class DBResponse {
 
-    @Override
-    public boolean canView(User user, Item item) throws InternalServiceException {
-        return false;
-    }
-
-    @Override
-    public boolean canEdit(User user, Item item) throws InternalServiceException {
-        return false;
-    }
-
-    @Override
-    public boolean isOwner(User user, Item item) throws InternalServiceException {
-        return false;
-    }
+    public int deleted;
+    public int errors;
+    public List<String> generated_keys;
+    public int inserted;
+    public int replaced;
+    public int skipped;
+    public int unchanged;
 }

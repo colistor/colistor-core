@@ -14,16 +14,22 @@
 *You should have received a copy of the GNU Affero General Public License
 *along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-package com.colistor.core.persistence.model;
+package com.colistor.core.services;
 
-import java.util.Map;
+import com.colistor.core.persistence.model.Filter;
+import com.colistor.core.services.exception.ServiceException;
 
-public class Filter {
+import java.util.List;
 
-    public Map<String, Object> criteria;
-    public int offset;
-    public int limit;
-    public String orderBy;
-    public boolean asc;
+public interface CommonSI<T> {
 
+    T add(String userCode, T t) throws ServiceException;
+
+    T modify(String userCode, String tCode, T t) throws ServiceException;
+
+    T delete(String userCode, String tCode) throws ServiceException;
+
+    T findByCode(String userCode, String tCode) throws ServiceException;
+
+    List<T> findByUserCode(String userCode, Filter filter) throws ServiceException;
 }

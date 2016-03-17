@@ -14,16 +14,25 @@
 *You should have received a copy of the GNU Affero General Public License
 *along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-package com.colistor.core.persistence.model;
+package com.colistor.core.tools.config;
 
-import java.util.Map;
+public interface ColistorConfig {
 
-public class Filter {
+    //Database
+    String db_host();
 
-    public Map<String, Object> criteria;
-    public int offset;
-    public int limit;
-    public String orderBy;
-    public boolean asc;
+    String db_port();
+
+    String db_username();
+
+    String db_password();
+
+    int db_pool_size();
+
+    //Email template
+    String email_template_directory();
+
+    //Log
+    String log_directory();
 
 }

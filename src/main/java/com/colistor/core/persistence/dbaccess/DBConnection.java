@@ -14,16 +14,39 @@
 *You should have received a copy of the GNU Affero General Public License
 *along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-package com.colistor.core.persistence.model;
+package com.colistor.core.persistence.dbaccess;
 
-import java.util.Map;
+import com.rethinkdb.RethinkDB;
+import com.rethinkdb.net.Connection;
 
-public class Filter {
+public class DBConnection {
 
-    public Map<String, Object> criteria;
-    public int offset;
-    public int limit;
-    public String orderBy;
-    public boolean asc;
+    private RethinkDB r;
 
+    private Connection conn;
+
+    public DBConnection() {
+        establishConnection();
+    }
+
+    public RethinkDB getR() {
+        if (r == null || conn == null) {
+            establishConnection();
+        }
+
+        return r;
+    }
+
+    public Connection getConn() {
+        if (r == null || conn == null) {
+            establishConnection();
+        }
+        return conn;
+    }
+
+    private void establishConnection() {
+        r = RethinkDB.r;
+        conn = r.connection()
+                .hostname("localhost").port(28015).connect();
+    }
 }

@@ -17,8 +17,7 @@
 
 package com.colistor.core.persistence.exception;
 
-import org.mariadb.jdbc.internal.SQLExceptionMapper.SQLStates;
-import tool.exception.ErrorDBConnection;
+import com.colistor.core.tools.exception.ErrorDBConnection;
 
 import java.sql.SQLException;
 
@@ -146,13 +145,6 @@ public class DAOException extends Exception {
      */
     public static DAOException declareInsertException(SQLException e) {
         DAOException daoExc = null;
-        if (e.getSQLState().startsWith(
-                SQLStates.CONSTRAINT_VIOLATION.getSqlState())) {
-            daoExc = new DAOException(INTEGRITY_CONSTRAINT);
-            ErrorDBConnection.get().insertError(e, daoExc.getCodeCase(),
-                    daoExc.getLevel());
-            return daoExc;
-        }
         daoExc = new DAOException(ERROR_WHILE_INSERTING_OBJECT,
                 ExceptionLevel.LOW);
         ErrorDBConnection.get().insertError(e, daoExc.getCodeCase(),
@@ -168,13 +160,6 @@ public class DAOException extends Exception {
      */
     public static DAOException declareModifyException(SQLException e) {
         DAOException daoExc = null;
-        if (e.getSQLState().startsWith(
-                SQLStates.CONSTRAINT_VIOLATION.getSqlState())) {
-            daoExc = new DAOException(INTEGRITY_CONSTRAINT, ExceptionLevel.LOW);
-            ErrorDBConnection.get().insertError(e, daoExc.getCodeCase(),
-                    daoExc.getLevel());
-            return daoExc;
-        }
         daoExc = new DAOException(ERROR_WHILE_MODIFYING_OBJECT);
         ErrorDBConnection.get().insertError(e, daoExc.getCodeCase(),
                 daoExc.getLevel());
@@ -189,13 +174,6 @@ public class DAOException extends Exception {
      */
     public static DAOException declareEraseException(SQLException e) {
         DAOException daoExc = null;
-        if (e.getSQLState().startsWith(
-                SQLStates.CONSTRAINT_VIOLATION.getSqlState())) {
-            daoExc = new DAOException(INTEGRITY_CONSTRAINT, ExceptionLevel.LOW);
-            ErrorDBConnection.get().insertError(e, daoExc.getCodeCase(),
-                    daoExc.getLevel());
-            return daoExc;
-        }
         daoExc = new DAOException(ERROR_WHILE_ERASING_OBJECT);
         ErrorDBConnection.get().insertError(e, daoExc.getCodeCase(),
                 daoExc.getLevel());

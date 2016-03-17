@@ -195,10 +195,8 @@ public class APIHttpServlet extends HttpServlet {
             if (!exception.getLevel().getLevel()
                     .equals(ExceptionLevel.VERY_LOW.getLevel())) {
                 ErrorDBConnection.get().insertError(exception);
-                ErrorPanel panel = errorPanel.get();
-                panel.setError(international.get()
-                        .getError(exception.getCode()));
-                resp.getWriter().print(panel.getCode());
+                //TODO manage expcetion
+                resp.getWriter().print("todo manage exception APIHTTPSERVLET");
             }
         }
     }
@@ -248,8 +246,7 @@ public class APIHttpServlet extends HttpServlet {
                     && !cookie.getValue().equals("")) {
                 session.setAttribute(WebParam.SESSION_NEXT_PAGE, request
                         .getRequestURL().toString());
-                response.sendRedirect(WebParam.SERVER_URL
-                        + GuiceServletConfig.LOGIN_URL);
+                //todo send not loged in
             }
         }
     }

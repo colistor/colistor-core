@@ -17,62 +17,21 @@
 
 package com.colistor.core.persistence.model;
 
+import com.colistor.core.persistence.dbaccess.Entity;
+import com.colistor.core.persistence.dbaccess.Field;
 import jodd.vtor.constraint.NotBlank;
 
-import java.util.List;
-
-public class Drawer {
-
-    @NotBlank(profiles = {"is_u,is_d"})
-    private String id;
-
-    @NotBlank(profiles = {"s_u,s_d"})
-    private String code;
+@Entity(name = "drawer")
+public class Drawer extends UserObject {
 
     @NotBlank(profiles = {"i,u"})
-    private String title;
+    @Field(name = "title", insert = true, update = true)
+    public String title;
 
-    private String description;
+    @Field(name = "description", insert = true, update = true)
+    public String description;
 
-    private java.util.List<Share> shares;
+    @Field(name = "shares", insert = true, update = true)
+    public java.util.List<Share> shares;
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public java.util.List<Share> getShares() {
-        return shares;
-    }
-
-    public void setShares(List<Share> shares) {
-        this.shares = shares;
-    }
 }

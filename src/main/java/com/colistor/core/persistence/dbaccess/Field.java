@@ -14,26 +14,17 @@
 *You should have received a copy of the GNU Affero General Public License
 *along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-package com.colistor.core.internalservices.right;
 
-import com.colistor.core.internalservices.exception.InternalServiceException;
-import com.colistor.core.persistence.model.Drawer;
-import com.colistor.core.persistence.model.User;
+package com.colistor.core.persistence.dbaccess;
 
-public class OnDrawer implements RightI<Drawer> {
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
 
-    @Override
-    public boolean canView(User user, Drawer drawer) throws InternalServiceException {
-        return false;
-    }
+@Retention(RetentionPolicy.RUNTIME)
+public @interface Field {
+    String name();
 
-    @Override
-    public boolean canEdit(User user, Drawer drawer) throws InternalServiceException {
-        return false;
-    }
+    boolean insert() default false;
 
-    @Override
-    public boolean isOwner(User user, Drawer drawer) throws InternalServiceException {
-        return false;
-    }
+    boolean update() default false;
 }

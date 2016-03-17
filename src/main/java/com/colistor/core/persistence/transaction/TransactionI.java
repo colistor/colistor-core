@@ -17,7 +17,7 @@
 
 package com.colistor.core.persistence.transaction;
 
-import java.sql.Connection;
+import com.rethinkdb.net.Connection;
 
 // TODO: Auto-generated Javadoc
 

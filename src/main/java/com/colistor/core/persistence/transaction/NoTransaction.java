@@ -17,12 +17,9 @@
 
 package com.colistor.core.persistence.transaction;
 
+import com.colistor.core.persistence.dbaccess.DBConnection;
+import com.colistor.core.persistence.dbaccess.PoolDBConnection;
 import com.google.inject.Inject;
-import persistence.factory.DBConnection;
-import persistence.factory.PoolDBConnection;
-
-import java.sql.Connection;
-import java.sql.SQLException;
 
 // TODO: Auto-generated Javadoc
 
@@ -45,81 +42,75 @@ public class NoTransaction implements TransactionI {
     private DBConnection dbConnection;
 
     /**
-     * Need the pool of connection to works.
+     * Instantiates a new transaction.
      *
      * @param poolDBConnection the pool db connection
      */
     @Inject
     public NoTransaction(PoolDBConnection poolDBConnection) {
         this.poolDBConnection = poolDBConnection;
-        dbConnection = null;
     }
 
-    /**
-     * At the first time a connection to the database is obtained with the pool
-     * and start the no transaction mode. Each time this function is called, the
-     * same connection is given with the no transaction mode set. You can call
-     * this method multiple time but with no transaction your should not execute
-     * more than one request
-     *
-     * @return the connection
+    /* (non-Javadoc)
+     * @see persistence.transaction.TransactionInterface#getConnection()
      */
-    @Override
-    public Connection getConnection() {
-        if (dbConnection == null) {
-            Connection connection = null;
-            try {
-                connection = (dbConnection = poolDBConnection.get())
-                        .getConnection();
-
-                connection.setAutoCommit(true);
-            } catch (SQLException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-            return connection;
-        } else {
-            try {
-                return dbConnection.getConnection();
-            } catch (SQLException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-        }
-        return null;
+    public com.rethinkdb.net.Connection getConnection() {
+        return getDBConncetion().getConn();
     }
 
-    /**
-     * After a request with no transaction it is the end of the transaction so
-     * the connection is given back.
+    /* (non-Javadoc)
+     * @see persistence.transaction.TransactionInterface#endOfRequest()
      */
     @Override
     public void endOfRequest() {
+
+    }
+
+    /* (non-Javadoc)
+     * @see persistence.transaction.TransactionInterface#commit()
+     */
+    @Override
+    public void commit() {
+        if (dbConnection != null) {
+            //dbConnection.getConn();
+        }
+        giveBack();
+    }
+
+    /* (non-Javadoc)
+     * @see persistence.transaction.TransactionInterface#rollback()
+     */
+    @Override
+    public void rollback() {
+        if (dbConnection != null) {
+            //dbConnection.getConn();
+        }
         giveBack();
     }
 
     /**
-     * Nothing to do with no transaction.
-     */
-    @Override
-    public void commit() {
-    }
-
-    /**
-     * Nothing to do with no transaction.
-     */
-    @Override
-    public void rollback() {
-    }
-
-    /**
-     * Give the connection back to the pool of connection.
+     * Give back.
      */
     private void giveBack() {
         if (dbConnection != null) {
             poolDBConnection.giveBack(dbConnection);
             dbConnection = null;
         }
+    }
+
+    /**
+     * Gets the DB conncetion.
+     *
+     * @return the DB conncetion
+     */
+    private DBConnection getDBConncetion() {
+        if (dbConnection == null) {
+            dbConnection = poolDBConnection.get();
+
+            dbConnection.getConn();
+
+        }
+        return dbConnection;
     }
 
 }

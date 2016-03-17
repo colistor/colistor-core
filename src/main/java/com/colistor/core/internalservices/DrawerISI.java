@@ -16,7 +16,11 @@
 */
 package com.colistor.core.internalservices;
 
+import com.colistor.core.internalservices.exception.InternalServiceException;
+import com.colistor.core.persistence.model.Drawer;
+import com.colistor.core.persistence.transaction.TransactionI;
+
 public interface DrawerISI {
 
-
+    Drawer add(TransactionI trans, String userCode, Drawer drawer) throws InternalServiceException;
 }

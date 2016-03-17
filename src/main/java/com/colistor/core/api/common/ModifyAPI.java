@@ -14,16 +14,22 @@
 *You should have received a copy of the GNU Affero General Public License
 *along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-package com.colistor.core.persistence.model;
+package com.colistor.core.api.common;
 
-import java.util.Map;
+import com.colistor.core.api.APIHttpServlet;
+import com.colistor.core.api.exception.WebException;
+import com.colistor.core.persistence.model.User;
 
-public class Filter {
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.io.IOException;
 
-    public Map<String, Object> criteria;
-    public int offset;
-    public int limit;
-    public String orderBy;
-    public boolean asc;
+public class ModifyAPI<T> extends APIHttpServlet {
 
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response, HttpSession session, User user) throws WebException, ServletException, IOException {
+        super.doPost(request, response, session, user);
+    }
 }

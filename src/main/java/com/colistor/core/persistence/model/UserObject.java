@@ -16,14 +16,17 @@
 */
 package com.colistor.core.persistence.model;
 
-import java.util.Map;
+import jodd.vtor.constraint.NotBlank;
 
-public class Filter {
+public abstract class UserObject extends StandardObject {
 
-    public Map<String, Object> criteria;
-    public int offset;
-    public int limit;
-    public String orderBy;
-    public boolean asc;
+    /**
+     * The code of the user that owns this object
+     * <p>
+     * i = Services and internal services on insert
+     */
+    @NotBlank(profiles = {"i"})
+    @com.colistor.core.persistence.dbaccess.User(field = "usercode")
+    public String userCode;
 
 }

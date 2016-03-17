@@ -14,16 +14,20 @@
 *You should have received a copy of the GNU Affero General Public License
 *along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-package com.colistor.core.persistence.model;
+package com.colistor.core.persistence;
 
-import java.util.Map;
+import com.colistor.core.persistence.dao.CommonDAO;
+import com.colistor.core.persistence.dao.DAOI;
+import com.colistor.core.persistence.model.User;
+import com.google.inject.AbstractModule;
+import com.google.inject.Singleton;
+import com.google.inject.TypeLiteral;
 
-public class Filter {
-
-    public Map<String, Object> criteria;
-    public int offset;
-    public int limit;
-    public String orderBy;
-    public boolean asc;
-
+public class GuicePersistence extends AbstractModule {
+    @Override
+    protected void configure() {
+        bind(new TypeLiteral<DAOI<User>>() {
+        }).to(new TypeLiteral<CommonDAO<User>>() {
+        }).in(Singleton.class);
+    }
 }

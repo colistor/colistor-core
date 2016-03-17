@@ -14,16 +14,16 @@
 *You should have received a copy of the GNU Affero General Public License
 *along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-package com.colistor.core.persistence.model;
+package com.colistor.core.internalservices;
 
-import java.util.Map;
+import com.colistor.core.internalservices.exception.InternalServiceException;
+import com.colistor.core.persistence.transaction.TransactionI;
 
-public class Filter {
+public interface CommonISI<T> {
 
-    public Map<String, Object> criteria;
-    public int offset;
-    public int limit;
-    public String orderBy;
-    public boolean asc;
+    T add(TransactionI trans, T t) throws InternalServiceException;
 
+    T modify(TransactionI trans, T t) throws InternalServiceException;
+
+    void delete(TransactionI trans, T t) throws InternalServiceException;
 }

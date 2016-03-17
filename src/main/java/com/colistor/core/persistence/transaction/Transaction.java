@@ -17,15 +17,11 @@
 
 package com.colistor.core.persistence.transaction;
 
+import com.colistor.core.persistence.dbaccess.DBConnection;
+import com.colistor.core.persistence.dbaccess.PoolDBConnection;
 import com.google.inject.Inject;
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
-import persistence.exception.DAOException;
-import persistence.factory.DBConnection;
-import persistence.factory.PoolDBConnection;
+import com.rethinkdb.net.Connection;
 
-import java.sql.Connection;
-import java.sql.SQLException;
 
 // TODO: Auto-generated Javadoc
 
@@ -58,13 +54,7 @@ public class Transaction implements TransactionI {
      * @see persistence.transaction.TransactionInterface#getConnection()
      */
     public Connection getConnection() {
-        try {
-            return getDBConncetion().getConnection();
-        } catch (SQLException e) {
-            Logger.getLogger(DAOException.class).log(Level.ERROR,
-                    e.getMessage(), e);
-        }
-        return null;
+        return getDBConncetion().getConn();
     }
 
     /* (non-Javadoc)
@@ -80,13 +70,8 @@ public class Transaction implements TransactionI {
      */
     @Override
     public void commit() {
-        try {
-            if (dbConnection != null) {
-                dbConnection.getConnection().commit();
-            }
-        } catch (SQLException e) {
-            Logger.getLogger(DAOException.class).log(Level.ERROR,
-                    e.getMessage(), e);
+        if (dbConnection != null) {
+            //dbConnection.getConn();
         }
         giveBack();
     }
@@ -96,13 +81,8 @@ public class Transaction implements TransactionI {
      */
     @Override
     public void rollback() {
-        try {
-            if (dbConnection != null) {
-                dbConnection.getConnection().rollback();
-            }
-        } catch (SQLException e) {
-            Logger.getLogger(DAOException.class).log(Level.ERROR,
-                    e.getMessage(), e);
+        if (dbConnection != null) {
+            //dbConnection.getConn();
         }
         giveBack();
     }
@@ -125,12 +105,9 @@ public class Transaction implements TransactionI {
     private DBConnection getDBConncetion() {
         if (dbConnection == null) {
             dbConnection = poolDBConnection.get();
-            try {
-                dbConnection.getConnection().setAutoCommit(false);
-            } catch (SQLException e) {
-                Logger.getLogger(DAOException.class).log(Level.ERROR,
-                        e.getMessage(), e);
-            }
+
+            dbConnection.getConn();
+
         }
         return dbConnection;
     }

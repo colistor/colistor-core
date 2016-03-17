@@ -17,14 +17,13 @@
 package com.colistor.core.internalservices.right;
 
 import com.colistor.core.internalservices.exception.InternalServiceException;
-import com.colistor.core.persistence.model.User;
 
 public interface RightI<T> {
 
-    boolean canView(User user, T t) throws InternalServiceException;
+    boolean canView(String userCode, String tCode, T type) throws InternalServiceException;
 
-    boolean canEdit(User user, T t) throws InternalServiceException;
+    boolean canEdit(String userCode, String tCode, T type) throws InternalServiceException;
 
-    boolean isOwner(User user, T t) throws InternalServiceException;
+    boolean isOwner(String userCode, String tCode, T type) throws InternalServiceException;
 
 }
