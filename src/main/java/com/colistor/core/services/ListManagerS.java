@@ -14,35 +14,26 @@
 *You should have received a copy of the GNU Affero General Public License
 *along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-
 package com.colistor.core.services;
 
 import com.colistor.core.persistence.model.Filter;
+import com.colistor.core.persistence.model.Item;
 import com.colistor.core.persistence.model.List;
 import com.colistor.core.services.exception.ServiceException;
 
-public interface ListSI {
+public class ListManagerS implements ListManagerSI {
+    @Override
+    public List addItems(String userCode, String listCode, String... itemCodes) throws ServiceException {
+        return null;
+    }
 
-    java.util.List<List> create(String userCode, String drawerCode, List... list) throws ServiceException;
+    @Override
+    public java.util.List<Item> getItems(String userCode, String listCode, Filter filter) throws ServiceException {
+        return null;
+    }
 
-    /**
-     * Creates multiple lists with the same items. Useful for a process, each step is a list.
-     *
-     * @param userCode
-     * @param drawerCode
-     * @param list
-     * @param itemCodes
-     * @return
-     * @throws ServiceException
-     */
-    java.util.List<List> create(String userCode, String drawerCode, List[] list, String... itemCodes) throws ServiceException;
-
-    List modify(String userCode, String listCode, List list) throws ServiceException;
-
-    void delete(String userCode, String... listCode) throws ServiceException;
-
-    java.util.List<List> find(String userCode, String drawerCode, Filter filter) throws ServiceException;
-
-    java.util.List<List> findByTemplate(String userCode, String drawerCode, String listTemplateCode, Filter filter) throws ServiceException;
-
+    @Override
+    public List removeItems(String userCode, String listCode, String... itemCodes) throws ServiceException {
+        return null;
+    }
 }

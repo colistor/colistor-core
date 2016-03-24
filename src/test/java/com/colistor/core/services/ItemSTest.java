@@ -14,22 +14,41 @@
 *You should have received a copy of the GNU Affero General Public License
 *along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-package com.colistor.core.api.common;
+package com.colistor.core.services;
 
-import com.colistor.core.api.APIHttpServlet;
-import com.colistor.core.api.exception.WebException;
-import com.colistor.core.persistence.model.User;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import java.io.IOException;
+public class ItemSTest {
 
-public class ModifyAPI<T> extends APIHttpServlet {
+    @Before
+    public void setUp() throws Exception {
 
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response, HttpSession session, User user) throws WebException, ServletException, IOException {
-        super.doPost(request, response, session, user);
+    }
+
+    @After
+    public void tearDown() throws Exception {
+
+    }
+
+    @Test
+    public void testCreate() throws Exception {
+
+    }
+
+    @Test
+    public void testModify() throws Exception {
+
+    }
+
+    @Test
+    public void testDelete() throws Exception {
+
+    }
+
+    @Test
+    public void testFind() throws Exception {
+
     }
 }

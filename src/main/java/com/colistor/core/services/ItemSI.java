@@ -17,7 +17,7 @@
 
 package com.colistor.core.services;
 
-import com.colistor.core.persistence.model.Drawer;
+import com.colistor.core.persistence.model.Filter;
 import com.colistor.core.persistence.model.Item;
 import com.colistor.core.services.exception.ServiceException;
 
@@ -58,14 +58,20 @@ public interface ItemSI {
      *
      * @see com.colistor.core.persistence.model.User
      *
-     * @param userCode The code of the user, to make sure that the user has the right to delete
+     * @param userCode The code of the user, to make sure that the user has the rights to delete
      * @param itemCode The code of the item to delete
      * @throws ServiceException It will be thrown if the parameters are not correct or if something else happens
      */
     void delete(String userCode, String itemCode) throws ServiceException;
 
-    List<Item> findAll(String userCode, int offset, int limit, boolean asc) throws ServiceException;
-
-    List<Drawer> findByCriteria(String userCode, String criteria, int offset, int limit, boolean asc) throws ServiceException;
+    /**
+     * Retrieves items.
+     *
+     * @param userCode The user code to select only the items that the user can see (including shared)
+     * @param filter   A filter to apply to the selection.
+     * @return A list of items corresponding to the criteria.
+     * @throws ServiceException
+     */
+    List<Item> find(String userCode, Filter filter) throws ServiceException;
 
 }

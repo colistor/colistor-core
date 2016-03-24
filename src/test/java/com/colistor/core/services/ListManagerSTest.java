@@ -14,16 +14,36 @@
 *You should have received a copy of the GNU Affero General Public License
 *along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-package com.colistor.core.internalservices.right;
+package com.colistor.core.services;
 
-import com.colistor.core.internalservices.exception.InternalServiceException;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
-public interface RightI<T> {
+public class ListManagerSTest {
 
-    boolean canView(String userCode, String tCode, T type) throws InternalServiceException;
+    @Before
+    public void setUp() throws Exception {
 
-    boolean canEdit(String userCode, String tCode, T type) throws InternalServiceException;
+    }
 
-    boolean isOwner(String userCode, String tCode, T type) throws InternalServiceException;
+    @After
+    public void tearDown() throws Exception {
 
+    }
+
+    @Test
+    public void testAddItems() throws Exception {
+
+    }
+
+    @Test
+    public void testGetItems() throws Exception {
+
+    }
+
+    @Test
+    public void testRemoveItems() throws Exception {
+
+    }
 }

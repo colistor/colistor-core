@@ -19,19 +19,87 @@ package com.colistor.core.services;
 
 import com.colistor.core.persistence.model.Drawer;
 import com.colistor.core.persistence.model.Filter;
+import com.colistor.core.persistence.model.Share;
 import com.colistor.core.services.exception.ServiceException;
 
 import java.util.List;
 
+/**
+ * Manages the drawers
+ */
 public interface DrawerSI {
 
+    /**
+     * Adds a new drawer
+     *
+     * @param userCode The user that will own the drawer
+     * @param drawer   The values of the new drawer. The id and the code are not needed, it will be generated.
+     * @return The new drawer with the code.
+     * @throws ServiceException
+     */
     Drawer add(String userCode, Drawer drawer) throws ServiceException;
 
-    void delete(String userCode, String drawerCode) throws ServiceException;
-
+    /**
+     * Modifies a drawer.
+     *
+     * @param userCode   The user code to make sure that this is the owner of the drawer.
+     * @param drawerCode The code of the drawer to modify
+     * @param drawer     The new values including the values that have not been modified.
+     * @return The Drawer with the new values.
+     * @throws ServiceException
+     */
     Drawer modify(String userCode, String drawerCode, Drawer drawer) throws ServiceException;
 
-    List<Drawer> findAll(String userCode, Filter filter) throws ServiceException;
+    /**
+     * Deletes a drawer and all its content except the Items.
+     *
+     * @param userCode   The user code to verify that it is the owner of the drawer.
+     * @param drawerCode The code of the drawer to delete
+     * @throws ServiceException
+     */
+    void delete(String userCode, String drawerCode) throws ServiceException;
 
-    List<Drawer> findByCriteria(String userCode, String criteria, Filter filter) throws ServiceException;
+    /**
+     * Retrieves all the drawers that the specified user can see (including shared). The selection can be filtered.
+     *
+     * @param userCode The user code to make sure to select only the drawers that the user is allowed to see
+     * @param filter   Not mandatory, applying a filter to the selection
+     * @return A list of drawers corresponding to the criteria
+     * @throws ServiceException
+     */
+    List<Drawer> find(String userCode, Filter filter) throws ServiceException;
+
+    /**
+     * Shares the drawer with another user.
+     *
+     * @param ownerUserCode   The owner of the drawer.
+     * @param grantedUserCode The user to share the drawer with.
+     * @param drawerCode      The drawer to share.
+     * @param share           The values
+     * @return
+     * @throws ServiceException
+     */
+    Share share(String ownerUserCode, String grantedUserCode, String drawerCode, Share share) throws ServiceException;
+
+    /**
+     * Modifies a share. Can only modify the permissions.
+     *
+     * @param userCode   The user code to make sure that the user is the owner
+     * @param drawerCode The code of the drawer that is shared
+     * @param position   The position of the share in the drawer
+     * @param share      The new values including the values that have not been modified.
+     * @return The share with the new values.
+     * @throws ServiceException
+     */
+    Share modifyShare(String userCode, String drawerCode, int position, Share share) throws ServiceException;
+
+    /**
+     * Deletes a share.
+     *
+     * @param userCode   The user code to make sure that the user is the owner.
+     * @param drawerCode The code of the drawer that is shaed.
+     * @param position   The position of the share in the drawer
+     * @throws ServiceException
+     */
+    void deleteShare(String userCode, String drawerCode, int position) throws ServiceException;
 }

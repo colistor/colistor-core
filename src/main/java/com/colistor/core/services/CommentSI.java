@@ -22,13 +22,53 @@ import com.colistor.core.services.exception.ServiceException;
 
 import java.util.List;
 
+/**
+ * The services available for commenting on a Drawer
+ */
 public interface CommentSI {
 
-    public Comment post(String userCode, String drawerCode, Comment comment) throws ServiceException;
+    /**
+     * Posts a new comment
+     *
+     * @param userCode   The owner of the comment. Check if the User has the right to post
+     * @param drawerCode The code of the drawer. A comment is associated to a Drawer
+     * @param comment    The Comment itself
+     * @return
+     * @throws ServiceException
+     */
+    Comment post(String userCode, String drawerCode, Comment comment) throws ServiceException;
 
-    public Comment modify(String userCode, String commentCode, Comment comment) throws ServiceException;
+    /**
+     * Modifies a comment
+     *
+     * @param userCode    The user code of the owner of the comment. Only the owner can modify a comment.
+     * @param commentCode The comment to modify identified by its code.
+     * @param comment     The new comment. The id and the code are not needed.
+     * @return
+     * @throws ServiceException
+     */
+    Comment modify(String userCode, String commentCode, Comment comment) throws ServiceException;
 
-    public void delete(String userCode, String commentCode) throws ServiceException;
 
-    public List<Comment> findAll(String userCode, String drawerCode, int offset, int limit, boolean asc) throws ServiceException;
+    /**
+     * Deletes a comment
+     *
+     * @param userCode    The user code of the owner of the comment. Only the owner can delete a comment.
+     * @param commentCode The comment to delete identified by its code
+     * @throws ServiceException
+     */
+    void delete(String userCode, String commentCode) throws ServiceException;
+
+    /**
+     * Retrieves all comments associated to a drawer.
+     *
+     * @param userCode   The user code to verify if the User has the right to do so.
+     * @param drawerCode The drawer code to get the comment associated to
+     * @param offset     The position of the first comment to get
+     * @param limit      The number of comments to get
+     * @param asc        Ascendant. If true the comments will be order by the publish date (or create date) ascendant otherwise descendant.
+     * @return
+     * @throws ServiceException
+     */
+    List<Comment> find(String userCode, String drawerCode, int offset, int limit, boolean asc) throws ServiceException;
 }

@@ -67,48 +67,6 @@ public class GuiceServletConfig extends GuiceServletContextListener {
                         /* Account */
                         serve(API_ACCOUNT_REGISTER).with(RegisterUser.class);
                         serve(API_ACCOUNT_MODIFY).with(ModifyUser.class);
-
-
-						/* API */
-						/*
-						 * serve(API_MODEL_URL).with(APIModelServlet.class);
-						 * serve(API_LOGIN_URL).with(APILoginServlet.class);
-						 * serveRegex( API_COLLECTION_URL,
-						 * API_MY_COLLECTIONS_URL, API_SHARED_COLLECTIONS_URL,
-						 * API_COLLECTION_VIEWMETA +
-						 * "/(([a-z]|[A-Z]|[0-9]){1,})").with(
-						 * APICollectionServlet.class); serveRegex(
-						 * API_COLLECTION_VIEW_URL +
-						 * "/(([a-z]|[A-Z]|[0-9]){1,})").with(
-						 * APIViewCollectionByStateServlet.class); serveRegex(
-						 * API_COLLECTION_VIEWITEM_URL +
-						 * "/(([a-z]|[A-Z]|[0-9]){1,})").with(
-						 * APIViewInstanceObjectServlet.class); serveRegex(
-						 * API_FORM_ADD_COLLECTION_URL +
-						 * "/(([a-z]|[A-Z]|[0-9]){1,})",
-						 * API_FORM_MODIFY_COLLECTION_URL +
-						 * "/(([a-z]|[A-Z]|[0-9]){1,})").with(
-						 * APICollectionFormServlet.class);
-						 * serve(API_FORM_DELETE_COLLECTION_URL).with(
-						 * APIDelCollectionFormServlet.class);
-						 * serve(API_FORM_MODIFY_INSTANCEOBJECT_URL,
-						 * API_FORM_ADD_INSTANCEOBJECT_URL).with(
-						 * APIEditInstanceObjectFormServlet.class); serveRegex(
-						 * API_MODEL_VIEW_URL +
-						 * "/(([a-z]|[A-Z]|[0-9]){1,})").with(
-						 * APIViewModelCollectionServlet.class);
-						 * serve(API_FORM_DELETE_INSTANCEOBJECT_URL).with(
-						 * APIDelInstanceObjectFormServlet.class); serveRegex(
-						 * API_COLLECTION_SHARE_URL +
-						 * "/(([a-z]|[A-Z]|[0-9]){1,})").with(
-						 * APIShareCollectionServlet.class);
-						 * serve(API_FORM_ADD_RIGHT, API_FORM_MOD_RIGHT,
-						 * API_FORM_DEL_RIGHT).with(
-						 * APIEditShareCollectionFormServlet.class);
-						 */
-
-						/* Main */
-                        //serve("/").with(MainServlet.class);
                     }
                 });
     }

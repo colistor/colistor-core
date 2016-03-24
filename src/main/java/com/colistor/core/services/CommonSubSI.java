@@ -14,20 +14,19 @@
 *You should have received a copy of the GNU Affero General Public License
 *along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-package com.colistor.core.internalservices;
+package com.colistor.core.services;
 
-import com.colistor.core.internalservices.exception.InternalServiceException;
-import com.colistor.core.persistence.transaction.TransactionI;
+import com.colistor.core.services.exception.ServiceException;
 
-public interface CommonISI<T> {
+import java.util.List;
 
-    T add(TransactionI trans, T t) throws InternalServiceException;
+public interface CommonSubSI<T, U> {
 
-    T modify(TransactionI trans, T t) throws InternalServiceException;
+    U add(String userCode, String tCode, U u) throws ServiceException;
 
-    void delete(TransactionI trans, T t) throws InternalServiceException;
+    U modify(String userCode, String tCode, int position, U u) throws ServiceException;
 
-    T findById(TransactionI trans, String id) throws InternalServiceException;
+    U delete(String userCode, String tCode, int position) throws ServiceException;
 
-    T findByCode(TransactionI trans, String code) throws InternalServiceException;
+    List<U> find(String userCode, String tCode) throws ServiceException;
 }

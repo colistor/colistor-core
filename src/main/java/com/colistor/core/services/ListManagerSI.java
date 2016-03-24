@@ -17,6 +17,7 @@
 
 package com.colistor.core.services;
 
+import com.colistor.core.persistence.model.Filter;
 import com.colistor.core.persistence.model.Item;
 import com.colistor.core.persistence.model.List;
 import com.colistor.core.services.exception.ServiceException;
@@ -47,15 +48,13 @@ public interface ListManagerSI {
      *
      * @param userCode The code of the User, needed to verify the grant over the list.
      * @param listCode The code of the List to get the items from.
-     * @param offset   The position of the first element that will be returned
-     * @param limit    The number of items returned
-     * @param asc      The order of the list, true=ascendant, false=descendant
+     * @param filter   A filter to apply to the selection
      * @return The items If the List is empty it will return an empty java.util.List<Item>
      * @throws ServiceException It will be thrown if the parameters are not correct or if something else happens
      * @see com.colistor.core.persistence.model.User
      * @see com.colistor.core.persistence.model.List
      */
-    java.util.List<Item> getItems(String userCode, String listCode, int offset, int limit, boolean asc) throws ServiceException;
+    java.util.List<Item> getItems(String userCode, String listCode, Filter filter) throws ServiceException;
 
     /**
      * Removing items from a list. This will not delete the items, just the references to the list.

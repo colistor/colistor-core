@@ -14,20 +14,15 @@
 *You should have received a copy of the GNU Affero General Public License
 *along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-package com.colistor.core.internalservices;
+package com.colistor.core.internalservices.rules;
 
 import com.colistor.core.internalservices.exception.InternalServiceException;
-import com.colistor.core.persistence.transaction.TransactionI;
 
-public interface CommonISI<T> {
+public interface CommonRuleI<T> {
 
-    T add(TransactionI trans, T t) throws InternalServiceException;
+    boolean isLegalOnInsert(String userCode, T t) throws InternalServiceException;
 
-    T modify(TransactionI trans, T t) throws InternalServiceException;
+    boolean isLegalOnUpdate(String userCode, T t) throws InternalServiceException;
 
-    void delete(TransactionI trans, T t) throws InternalServiceException;
-
-    T findById(TransactionI trans, String id) throws InternalServiceException;
-
-    T findByCode(TransactionI trans, String code) throws InternalServiceException;
+    boolean isLegalOnDelete(String userCode, T t) throws InternalServiceException;
 }

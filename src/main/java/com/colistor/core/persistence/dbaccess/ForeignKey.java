@@ -1,4 +1,4 @@
-/*Colistor, collections and lists organizer
+package com.colistor.core.persistence.dbaccess;/*Colistor, collections and lists organizer
 *Copyright (C) 2016  Colistor (Joel Favre)
 *
 *This program is free software: you can redistribute it and/or modify
@@ -14,14 +14,11 @@
 *You should have received a copy of the GNU Affero General Public License
 *along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-package com.colistor.core.services;
 
-import com.colistor.core.persistence.model.Share;
-import com.colistor.core.services.exception.ServiceException;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
 
-public interface ShareSI {
-
-    Share share(String ownerUserCode, String grantedUserCode, String drawerCode, Share share) throws ServiceException;
-
-    Share modify(String userCode, String shareCode, Share share) throws ServiceException;
+@Retention(RetentionPolicy.RUNTIME)
+public @interface ForeignKey {
+    String entity();
 }

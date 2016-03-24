@@ -132,4 +132,10 @@ public class WebParam {
     public static final String STYLE_URL = "style";
 
     public static final String JAVASCRIPT_URL = "js";
+
+    public static final String PARAM_QUERY = "q";
+    public static final String PARAM_ORDER_BY = "order";
+    public static final String PARAM_ASC = "asc";
+    public static final String PARAM_PAGE = "p";
+    public static final String PARAM_LIMIT = "limit";
 }

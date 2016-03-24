@@ -16,15 +16,54 @@
 */
 package com.colistor.core.services;
 
-import com.colistor.core.persistence.model.Appointment;
-import com.colistor.core.services.exception.ServiceException;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
-public interface AppoitmentSI {
+public class DrawerSTest {
 
-    Appointment add(String userCode, String drawerCode, Appointment appointment, String... listItemHookCode) throws ServiceException;
+    @Before
+    public void setUp() throws Exception {
 
-    Appointment modify(String userCode, String appointmentCode, Appointment appointment) throws ServiceException;
+    }
 
-    Appointment delete(String userCode, String appointmentCode) throws ServiceException;
+    @After
+    public void tearDown() throws Exception {
 
+    }
+
+    @Test
+    public void testAdd() throws Exception {
+
+    }
+
+    @Test
+    public void testModify() throws Exception {
+
+    }
+
+    @Test
+    public void testDelete() throws Exception {
+
+    }
+
+    @Test
+    public void testFind() throws Exception {
+
+    }
+
+    @Test
+    public void testShare() throws Exception {
+
+    }
+
+    @Test
+    public void testModifyShare() throws Exception {
+
+    }
+
+    @Test
+    public void testDeleteShare() throws Exception {
+
+    }
 }

@@ -82,5 +82,4 @@ public class CommonDAO<T> implements DAOI<T> {
 
     }
 
-
 }

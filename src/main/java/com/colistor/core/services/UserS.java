@@ -16,13 +16,18 @@
 */
 package com.colistor.core.services;
 
+import com.colistor.core.internalservices.MailerIS;
+import com.colistor.core.internalservices.MailerISI;
 import com.colistor.core.internalservices.UserISI;
+import com.colistor.core.internalservices.exception.InternalServiceException;
 import com.colistor.core.persistence.annotation.Transaction;
 import com.colistor.core.persistence.model.User;
 import com.colistor.core.persistence.transaction.TransactionI;
 import com.colistor.core.services.exception.ServiceException;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
+
+import java.util.HashMap;
 
 /**
  * Services for a User (authentication, registering, modifying, deleting)
@@ -32,6 +37,8 @@ public class UserS implements UserSI {
     private final Provider<TransactionI> transProvider;
     @Inject
     private Provider<UserISI> userIS;
+    @Inject
+    private Provider<MailerISI> mailerIS;
 
     @Inject
     public UserS(@Transaction Provider<TransactionI> transProvider) {
@@ -69,7 +76,11 @@ public class UserS implements UserSI {
         boolean commit = false;
         try {
             userRet = userIS.get().register(trans, user);
+            mailerIS.get().sendEmail(MailerIS.Template.REGISTERING_USER.getTemplate(),
+                    userRet.lang, new HashMap<String, String>(), userRet.email);
             commit = true;
+        } catch (InternalServiceException e) {
+            e.printStackTrace();
         } finally {
             if (commit) {
                 trans.commit();
@@ -82,6 +93,11 @@ public class UserS implements UserSI {
 
     @Override
     public User modify(String userCode, User user) throws ServiceException {
+        return null;
+    }
+
+    @Override
+    public User getUser(String userCode) throws ServiceException {
         return null;
     }
 

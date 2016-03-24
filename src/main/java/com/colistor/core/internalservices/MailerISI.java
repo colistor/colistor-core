@@ -29,10 +29,26 @@ public interface MailerISI {
      * Send an email to one or more email address(es).
      *
      * @param templateName The name of the email template to use
-     * @param subject      The subject of the email
+     * @param lang      The language of the email
      * @param values       The map of keys and values to replace in the template
      * @param emails       The list of email addresses
      * @throws InternalServiceException It will be thrown if the parameters are not correct or if something else happens
      */
-    void sendEmail(String templateName, String subject, Map<String, String> values, String... emails) throws InternalServiceException;
+    void sendEmail(String templateName, String lang, Map<String, String> values, String... emails) throws InternalServiceException;
+
+    enum Template {
+        REGISTERING_USER("registering_user"),
+        DELETING_ACCOUNT("deleting_account"),
+        CONFIRMING_EMAIL("confirming_email");
+
+        private String name;
+
+        Template(String name) {
+            this.name = name;
+        }
+
+        public String getTemplate() {
+            return name;
+        }
+    }
 }

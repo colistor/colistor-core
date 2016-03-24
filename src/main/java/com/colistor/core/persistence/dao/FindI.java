@@ -51,7 +51,7 @@ public interface FindI<T> {
     T findByCode(TransactionI trans, String code) throws DAOException;
 
     /**
-     * Finds every entry that is matching the usercode (owner) or is public
+     * Finds every entry that is matching the usercode (owner)
      *
      * @param trans    The Transaction which provides the connection.
      * @param userCode The usercode (owner) of the entry to retrieve
@@ -60,7 +60,7 @@ public interface FindI<T> {
      * @return A list of data model objects mapped form the database
      * @throws DAOException
      */
-    List<T> findByUserCodeOrPublic(TransactionI trans, String userCode, Filter filter) throws DAOException;
+    List<T> findByUserCode(TransactionI trans, String userCode, Filter filter) throws DAOException;
 
     List<T> findByFilter(TransactionI trans, Filter filter) throws DAOException;
 

@@ -14,7 +14,6 @@
 *You should have received a copy of the GNU Affero General Public License
 *along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-
 package com.colistor.core.services;
 
 import com.colistor.core.persistence.model.Filter;
@@ -24,20 +23,39 @@ import com.colistor.core.services.exception.ServiceException;
 
 import java.util.List;
 
-public interface ItemTemplateSI {
+public class ItemTemplateS implements ItemTemplateSI {
+    @Override
+    public ItemTemplate create(String userCode, ItemTemplate itemTemplate) throws ServiceException {
+        return null;
+    }
 
-    ItemTemplate create(String userCode, ItemTemplate itemTemplate) throws ServiceException;
+    @Override
+    public ItemTemplate modify(String userCode, String itemTemplateCode, ItemTemplate itemTemplate) throws ServiceException {
+        return null;
+    }
 
-    ItemTemplate modify(String userCode, String itemTemplateCode, ItemTemplate itemTemplate) throws ServiceException;
+    @Override
+    public void delete(String userCode, String itemTemplateCode) throws ServiceException {
 
-    void delete(String userCode, String itemTemplateCode) throws ServiceException;
+    }
 
-    void addField(String userCode, String itemTemplateCode, ItemTemplateField field) throws ServiceException;
+    @Override
+    public void addField(String userCode, String itemTemplateCode, ItemTemplateField field) throws ServiceException {
 
-    void modifyField(String userCode, String itemTemplateCode, int position, ItemTemplateField field) throws ServiceException;
+    }
 
-    void removeField(String userCode, String itemTemplateCode, int position) throws ServiceException;
+    @Override
+    public void modifyField(String userCode, String itemTemplateCode, int position, ItemTemplateField field) throws ServiceException {
 
-    List<ItemTemplate> find(String userCode, Filter filter) throws ServiceException;
+    }
 
+    @Override
+    public void removeField(String userCode, String itemTemplateCode, int position) throws ServiceException {
+
+    }
+
+    @Override
+    public List<ItemTemplate> find(String userCode, Filter filter) throws ServiceException {
+        return null;
+    }
 }

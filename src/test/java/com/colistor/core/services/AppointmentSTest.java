@@ -14,20 +14,56 @@
 *You should have received a copy of the GNU Affero General Public License
 *along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-package com.colistor.core.internalservices;
+package com.colistor.core.services;
 
-import com.colistor.core.internalservices.exception.InternalServiceException;
-import com.colistor.core.persistence.transaction.TransactionI;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
-public interface CommonISI<T> {
+public class AppointmentSTest {
 
-    T add(TransactionI trans, T t) throws InternalServiceException;
+    @Before
+    public void setUp() throws Exception {
 
-    T modify(TransactionI trans, T t) throws InternalServiceException;
+    }
 
-    void delete(TransactionI trans, T t) throws InternalServiceException;
+    @After
+    public void tearDown() throws Exception {
 
-    T findById(TransactionI trans, String id) throws InternalServiceException;
+    }
 
-    T findByCode(TransactionI trans, String code) throws InternalServiceException;
+    @Test
+    public void testAdd() throws Exception {
+
+    }
+
+    @Test
+    public void testAddListItem() throws Exception {
+
+    }
+
+    @Test
+    public void testRemoveListItem() throws Exception {
+
+    }
+
+    @Test
+    public void testModify() throws Exception {
+
+    }
+
+    @Test
+    public void testDelete() throws Exception {
+
+    }
+
+    @Test
+    public void testGetByCode() throws Exception {
+
+    }
+
+    @Test
+    public void testFind() throws Exception {
+
+    }
 }

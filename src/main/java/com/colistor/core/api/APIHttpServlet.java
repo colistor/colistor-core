@@ -21,6 +21,7 @@ import com.colistor.core.api.exception.WebControllerI;
 import com.colistor.core.api.exception.WebException;
 import com.colistor.core.persistence.exception.ExceptionLevel;
 import com.colistor.core.persistence.model.User;
+import com.colistor.core.services.exception.ServiceException;
 import com.colistor.core.tools.CookieManager;
 import com.colistor.core.tools.WebParam;
 import com.colistor.core.tools.exception.ErrorDBConnection;
@@ -28,6 +29,7 @@ import com.colistor.core.tools.international.International;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
 
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
 import java.io.IOException;
@@ -38,6 +40,8 @@ import java.util.Map;
  * The Class WebHttpServlet.
  */
 public class APIHttpServlet extends HttpServlet {
+
+    public static final String RELTIVE_PATH = "relat_path";
 
     /**
      * The Constant serialVersionUID.
@@ -55,11 +59,18 @@ public class APIHttpServlet extends HttpServlet {
      */
     private Map<String, WebControllerI> controllers;
 
+    private String relativePath;
+
     /**
      * Instantiates a new web http servlet.
      */
     public APIHttpServlet() {
         controllers = new HashMap<String, WebControllerI>();
+    }
+
+    @Override
+    public void init(ServletConfig config) throws ServletException {
+        this.relativePath = config.getInitParameter(RELTIVE_PATH);
     }
 
     /*
@@ -74,6 +85,7 @@ public class APIHttpServlet extends HttpServlet {
                          HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
+        response.setContentType("application/json");
         HttpSession session = request.getSession();
         User user = null;
         if (session != null
@@ -83,6 +95,8 @@ public class APIHttpServlet extends HttpServlet {
         try {
             doGet(request, response, session, user);
         } catch (WebException e) {
+            manageException(e, response);
+        } catch (ServiceException e) {
             manageException(e, response);
         }
     }
@@ -99,6 +113,7 @@ public class APIHttpServlet extends HttpServlet {
                           HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
+        response.setContentType("application/json");
         HttpSession session = request.getSession();
         User user = null;
         if (session != null
@@ -108,6 +123,8 @@ public class APIHttpServlet extends HttpServlet {
         try {
             doPost(request, response, session, user);
         } catch (WebException e) {
+            manageException(e, response);
+        } catch (ServiceException e) {
             manageException(e, response);
         }
     }
@@ -201,6 +218,12 @@ public class APIHttpServlet extends HttpServlet {
         }
     }
 
+    private void manageException(ServiceException exception,
+                                 HttpServletResponse resp) throws IOException {
+        //TODO manage expcetion
+        resp.getWriter().print("todo manage exception APIHTTPSERVLET");
+    }
+
     /**
      * Do get.
      *
@@ -214,7 +237,7 @@ public class APIHttpServlet extends HttpServlet {
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response,
                          HttpSession session, User user) throws WebException,
-            ServletException, IOException {
+            ServletException, IOException, ServiceException {
         throw new WebException(WebException.FUNCTION_NOT_IMPLEMENTED);
     }
 
@@ -231,7 +254,7 @@ public class APIHttpServlet extends HttpServlet {
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response,
                           HttpSession session, User user) throws WebException,
-            ServletException, IOException {
+            ServletException, IOException, ServiceException {
         throw new WebException(WebException.FUNCTION_NOT_IMPLEMENTED);
     }
 
@@ -251,4 +274,7 @@ public class APIHttpServlet extends HttpServlet {
         }
     }
 
+    public String getRelativePath() {
+        return relativePath;
+    }
 }

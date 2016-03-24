@@ -14,7 +14,7 @@
 *You should have received a copy of the GNU Affero General Public License
 *along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-package com.colistor.core.internalservices.right;
+package com.colistor.core.internalservices.rights;
 
 import com.colistor.core.internalservices.exception.InternalServiceException;
 import com.colistor.core.persistence.dbaccess.AccessAnnotation;

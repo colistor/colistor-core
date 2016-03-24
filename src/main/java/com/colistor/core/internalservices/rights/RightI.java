@@ -14,20 +14,16 @@
 *You should have received a copy of the GNU Affero General Public License
 *along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-package com.colistor.core.internalservices;
+package com.colistor.core.internalservices.rights;
 
 import com.colistor.core.internalservices.exception.InternalServiceException;
-import com.colistor.core.persistence.transaction.TransactionI;
 
-public interface CommonISI<T> {
+public interface RightI<T> {
 
-    T add(TransactionI trans, T t) throws InternalServiceException;
+    boolean canView(String userCode, String tCode, T type) throws InternalServiceException;
 
-    T modify(TransactionI trans, T t) throws InternalServiceException;
+    boolean canEdit(String userCode, String tCode, T type) throws InternalServiceException;
 
-    void delete(TransactionI trans, T t) throws InternalServiceException;
+    boolean isOwner(String userCode, String tCode, T type) throws InternalServiceException;
 
-    T findById(TransactionI trans, String id) throws InternalServiceException;
-
-    T findByCode(TransactionI trans, String code) throws InternalServiceException;
 }
